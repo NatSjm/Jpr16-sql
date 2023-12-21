@@ -18,13 +18,13 @@ CREATE TABLE Schedule
 (
     id        SERIAL PRIMARY KEY,
     name      VARCHAR(255),
-    updatedAt TIMESTAMP,
-    lesson_id INT REFERENCES Lesson (id) ON DELETE CASCADE
+    updatedAt TIMESTAMP
 );
 
 CREATE TABLE Schedule_Lesson
 (
     schedule_id INT REFERENCES Schedule (id) ON DELETE CASCADE,
     lesson_id   INT REFERENCES Lesson (id) ON DELETE CASCADE,
-    PRIMARY KEY (schedule_id, lesson_id)
+    CONSTRAINT shedule_lesson_pk
+        PRIMARY KEY (schedule_id, lesson_id)
 );
